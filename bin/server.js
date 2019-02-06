@@ -2,18 +2,22 @@ const express = require('express')
 const { optionsFromEnv, installSignalHandlers, setupErrorHandlers } = require('express-render-error')
 const debug = require('debug')('express-render-error:server')
 const path = require('path')
-const { prepareMustache, setupMustache } = require('express-mustache-overlays')
+const { prepareMustache, setupMustache, mustacheFromEnv } = require('express-mustache-overlays')
 const { preparePublicFiles, setupPublicFiles, publicFilesFromEnv } = require('express-public-files-overlays')
+const { bootstrapOptionsFromEnv } = require('../index')
 
 installSignalHandlers()
 const app = express()
 app.locals.debug = debug
-app.locals = Object.assign({}, app.locals, optionsFromEnv())
-preparePublicFiles(app)
+app.locals = Object.assign({}, app.locals, optionsFromEnv(), bootstrapOptionsFromEnv)
+preparePublicFiles(app, publicFilesFromEnv(app))
 app.locals.publicFiles.overlay('/public', [path.join(__dirname, '..', 'public')])
-prepareMustache(app)
+prepareMustache(app, mustacheFromEnv(app))
 app.locals.mustache.overlay([path.join(__dirname, '..', 'views')])
 // Add any routes here:
+app.get('/', (req, res) => {
+  res.render('content', { content: 'Hello' })
+})
 app.get('/throw', (req, res) => {
   throw new Error('Test Error')
 })

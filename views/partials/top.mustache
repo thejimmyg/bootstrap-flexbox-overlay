@@ -15,9 +15,7 @@
     {{#icon192Url}}<link rel="icon" sizes="192x192" href="{{icon192Url}}">{{/icon192Url}}
     {{#icon192Url}}<link rel="shortcut icon" type="image/png" href="{{icon192Url}}">{{/icon192Url}}
     {{#metaDescription}}<meta name="description" content="{{metaDescription}}">{{/metaDescription}}
-    {{#withPjaxPwa}}<script src="{{sharedPublicUrlPath}}/theme/jquery-pjax-2.0.1.js" crossorigin="anonymous"></script>{{/withPjaxPwa}}
-    {{#withPjaxPwa}}<meta name="mobile-web-app-capable" content="yes">{{/withPjaxPwa}}
-    {{#withPjaxPwa}}<link rel="manifest" href="{{manifestUrl}}">{{/withPjaxPwa}}
+    {{>headEnd}}
   </head>
   <body>
     {{>bodyTop}}
