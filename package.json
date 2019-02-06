@@ -1,0 +1,30 @@
+{
+  "name": "bootstrap-flexbox-overlay",
+  "version": "0.1.0",
+  "description": "A set of mustache templates to be used with express-mustache-overlays that provides a Bootstrap and Flexbox theme.",
+  "scripts": {
+    "docker:build": "docker build . -t thejimmyg/bootstrap-flexbox-overlay:0.1.0",
+    "docker:push": "docker push thejimmyg/bootstrap-flexbox-overlay:0.1.0",
+    "docker:build:test": "docker build . -t thejimmyg/bootstrap-flexbox-overlay:test",
+    "docker:push:test": "docker push thejimmyg/bootstrap-flexbox-overlay:test",
+    "docker:run": "docker run -e SCRIPT_NAME='' -e DEBUG'=bootstrap-flexbox-overlay:server,bootstrap-flexbox-overlay' -e PORT=80 --init -p 80:80 thejimmyg/bootstrap-flexbox-overlay:0.1.0",
+    "fix": "standard --fix index.js bin/*.js lib/*.js",
+    "start": "node bin/server.js"
+  },
+  "author": "JimmyG",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.1.0",
+    "express": "^4.16.4",
+    "express-mustache-overlays": "^0.5.0",
+    "express-render-error": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:thejimmyg/bootstrap-flexbox-overlay.git"
+  },
+  "devDependencies": {
+    "express-public-files-overlays": "^0.1.0",
+    "standard": "^12.0.1"
+  }
+}
