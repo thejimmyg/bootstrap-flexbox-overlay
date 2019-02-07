@@ -1,19 +1,23 @@
 const express = require('express')
-const { optionsFromEnv, installSignalHandlers, setupErrorHandlers } = require('express-render-error')
+const { prepareOption, prepareDebug, optionFromEnv, installSignalHandlers, setupErrorHandlers } = require('express-render-error')
 const debug = require('debug')('bootstrap-flexbox-overlay:server')
 const path = require('path')
 const { prepareMustache, setupMustache, mustacheFromEnv } = require('express-mustache-overlays')
 const { preparePublicFiles, setupPublicFiles, publicFilesFromEnv } = require('express-public-files-overlays')
-const { bootstrapOptionsFromEnv } = require('../index')
+const { prepareTheme, bootstrapOptionsFromEnv } = require('bootstrap-flexbox-overlay')
 
 installSignalHandlers()
+
 const app = express()
-app.locals.debug = debug
-app.locals = Object.assign({}, app.locals, optionsFromEnv(), bootstrapOptionsFromEnv)
+prepareDebug(app, debug)
+prepareOption(app, optionFromEnv(app))
 preparePublicFiles(app, publicFilesFromEnv(app))
-app.locals.publicFiles.overlay('/public', [path.join(__dirname, '..', 'public')])
 prepareMustache(app, mustacheFromEnv(app))
-app.locals.mustache.overlay([path.join(__dirname, '..', 'views')])
+prepareTheme(app, bootstrapOptionsFromEnv(app))
+
+// The main views and public directories are set up by prepareTheme() but we can put any overlays here:
+app.locals.mustache.overlay([path.join(__dirname, '..', 'views-overlay')])
+
 // Add any routes here:
 app.get('/', (req, res) => {
   res.render('content', { content: 'Hello' })
@@ -21,9 +25,13 @@ app.get('/', (req, res) => {
 app.get('/throw', (req, res) => {
   throw new Error('Test Error')
 })
+
+// Before error handlers
 setupPublicFiles(app)
-setupErrorHandlers(app, { debug })
-// Set up the engine
+// Right at the end before view installation
+setupErrorHandlers(app)
+
+// Set up the view
 const mustacheEngine = setupMustache(app)
 app.engine('mustache', mustacheEngine)
 app.set('views', app.locals.mustache.dirs)

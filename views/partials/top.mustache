@@ -2,19 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="{{sharedPublicUrlPath}}/theme/bootstrap.min.css">
-<script src="{{sharedPublicUrlPath}}/theme/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="{{sharedPublicUrlPath}}/theme/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="{{sharedPublicUrlPath}}/theme/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>{{#option}}{{title}}{{/option}}</title>
+    <link rel="stylesheet" href="{{#theme}}{{publicFilesUrl}}{{/theme}}/bootstrap.min.css">
+<script src="{{#theme}}{{publicFilesUrl}}{{/theme}}/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="{{#theme}}{{publicFilesUrl}}{{/theme}}/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="{{#theme}}{{publicFilesUrl}}{{/theme}}/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="no">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    {{#themeColor}}<meta name="theme-color" content="{{themeColor}}">{{/themeColor}}
+    {{#metaDescription}}<meta name="description" content="{{metaDescription}}">{{/metaDescription}}
+    {{#theme}}
+    {{#color}}<meta name="theme-color" content="{{color}}">{{/color}}
     {{#icon192Url}}<link rel="apple-touch-icon" href="{{icon192Url}}">{{/icon192Url}}
     {{#icon192Url}}<link rel="icon" sizes="192x192" href="{{icon192Url}}">{{/icon192Url}}
     {{#icon192Url}}<link rel="shortcut icon" type="image/png" href="{{icon192Url}}">{{/icon192Url}}
-    {{#metaDescription}}<meta name="description" content="{{metaDescription}}">{{/metaDescription}}
+    {{/theme}}
     {{>headEnd}}
   </head>
   <body>
