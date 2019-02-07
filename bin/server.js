@@ -1,6 +1,6 @@
 const express = require('express')
 const { optionsFromEnv, installSignalHandlers, setupErrorHandlers } = require('express-render-error')
-const debug = require('debug')('express-render-error:server')
+const debug = require('debug')('bootstrap-flexbox-overlay:server')
 const path = require('path')
 const { prepareMustache, setupMustache, mustacheFromEnv } = require('express-mustache-overlays')
 const { preparePublicFiles, setupPublicFiles, publicFilesFromEnv } = require('express-public-files-overlays')
