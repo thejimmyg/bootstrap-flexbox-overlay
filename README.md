@@ -59,6 +59,10 @@ npm run fix
 
 ## Changelog
 
+### 0.1.1 2019-02-07
+
+* Changed `top.mustache` to take the title from `title` first and `options.title` otherwise.
+
 ### 0.1.0 2019-02-06
 
 * First version

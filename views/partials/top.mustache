@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{#option}}{{title}}{{/option}}</title>
+    <title>{{#title}}{{title}}{{/title}}{{^title}}{{#option}}{{title}}{{/option}}{{/title}}</title>
     <link rel="stylesheet" href="{{#theme}}{{publicFilesUrl}}{{/theme}}/bootstrap.min.css">
 <script src="{{#theme}}{{publicFilesUrl}}{{/theme}}/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="{{#theme}}{{publicFilesUrl}}{{/theme}}/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
