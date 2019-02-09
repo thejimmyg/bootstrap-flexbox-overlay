@@ -43,6 +43,10 @@ npm run fix
 
 ## Changelog
 
+### 0.1.3 2019-02-08
+
+* Simplified `bodyTop.mustache`
+
 ### 0.1.2 2019-02-08
 
 * Improved the Docker example
