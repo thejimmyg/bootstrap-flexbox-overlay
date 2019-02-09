@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-flexbox-overlay",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A set of mustache templates to be used with express-mustache-overlays that provides a Bootstrap and Flexbox theme.",
   "scripts": {
     "fix": "standard --fix"
