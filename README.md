@@ -43,6 +43,11 @@ npm run fix
 
 ## Changelog
 
+### 0.1.4 2019-02-15
+
+* Fixed a few options bugs
+* Improved example docs
+
 ### 0.1.3 2019-02-08
 
 * Simplified `bodyTop.mustache`
